@@ -59,6 +59,7 @@ export class FolderComponent implements OnInit {
       this.folderData = result;
       this.allFoldersData = result;
       this.selectedRow = this.folderData[0];
+      this.currentFolderdata = result;
     });
   }
 
