@@ -1,0 +1,20 @@
+.toolbar-header {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  box-shadow: none;
+}
+
+.toolbar-header .path-row {
+  width: 80%;
+  border: 1px solid #dcdcdc;
+  padding: 4px
+}
+.toolbar-header mat-form-field {
+  width: 16%;
+}
+
+.toolbar-header .material-icons{
+  line-height: 44px;
+  height: 44px;
+}

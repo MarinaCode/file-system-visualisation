@@ -1,0 +1,9 @@
+<mat-card class="toolbar-header">
+  <span class="material-icons" style="cursor: pointer;" (click)="navigateBack()">arrow_upward</span>
+  <div class="path-row"><span>{{navigationPath}}</span></div>
+  <mat-form-field>
+    <input matInput placeholder="Search" class="search-field" (keyup.enter)="searchFiles($event)">
+  </mat-form-field>
+</mat-card>
+
+

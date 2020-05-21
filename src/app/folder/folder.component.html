@@ -1,0 +1,39 @@
+<mat-card>
+  <app-header-navigation #toolbar [allData]="allFoldersData" (updateGrid)="updateHierarchy($event)"
+                         [navigationPath]="currentPath" [currentData]="folderData"
+                         (toggleSearch)="toggleSearch($event)">
+
+  </app-header-navigation>
+  <div >
+  <table mat-table #fileInput  [dataSource]="folderData" matSort (matSortChange)="sortData($event)" >
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div style="display: contents; cursor:pointer" (dblclick)="navigateToFolder(element);">
+          <div *ngIf="element.children && element.children.length > 0" class="material-icons" style="margin-right: 5px; cursor: pointer;">folder</div>
+          <div *ngIf="!element.children || element.children.length == 0" class="material-icons" style="margin-right: 5px;">description</div>
+          <div>{{element.name}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="modificationDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Modification Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.modificationDate | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Size </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.size}}  </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="highlight(row)" [ngClass]="{'highlightColor': selectedRow == row}"></mat-row>
+  </table>
+  </div>
+</mat-card>
